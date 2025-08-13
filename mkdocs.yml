@@ -6,6 +6,10 @@ repo_name: <your-username>/<your-repo>
 theme:
   name: dracula
   favicon: assets/favicon.ico  # Optional
+  custom_dir: customisation
+
+extra_css:
+  - css/sidebar_expander.css
 
 plugins:
   - search

@@ -1,0 +1,18 @@
+/* Always show all nested lists in the nav */
+.navbar-nav .nav,
+.bs-sidebar .nav {
+  display: block !important;
+}
+
+/* Remove collapse animation or hiding */
+.bs-sidebar .nav > li > ul {
+  display: block !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure nested ul lists are indented properly */
+.bs-sidebar .nav li ul {
+  padding-left: 15px;
+}
