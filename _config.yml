@@ -55,7 +55,7 @@ defaults:
       has_children: false
       nav_order: 10
       # Optional: set a default date so "recent docs" works even if not set
-      date: 2025-01-01
+      date: "2025-01-01"
 
 # =========================================================
 # Navigation Links (top right corner)
