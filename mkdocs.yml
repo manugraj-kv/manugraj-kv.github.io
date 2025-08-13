@@ -4,12 +4,26 @@ repo_url: https://github.com/<your-username>/<your-repo>
 repo_name: <your-username>/<your-repo>
 
 theme:
-  name: dracula
-  favicon: assets/favicon.ico  # Optional
-  custom_dir: customisation
-
-extra_css:
-  - css/sidebar_expander.css
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
 
 plugins:
   - search
@@ -32,5 +46,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/<your-username>
+  generator: false
+copyright: Copyright &copy; 2016 - 2025 Skydda
 
 nav: []  # Let awesome-pages build from the docs/ folder
