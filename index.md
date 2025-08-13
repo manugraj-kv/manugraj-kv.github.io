@@ -1,17 +1,18 @@
+# 📄 Welcome
+
+This is your central documentation index.  
+Below are the **most recently added/updated pages** in this repository.
+
 ---
-title: Home
-layout: default
-nav_order: 1
+
+## 🆕 Recently Added
+
+<!-- RECENTLY_ADDED_START -->
+* [architecture/decisions/adr-0002.md](architecture/decisions/adr-0002.md)
+* [knowledge/deep/nested/path/example.md](knowledge/deep/nested/path/example.md)
+* [getting-started/intro.md](getting-started/intro.md)
+<!-- RECENTLY_ADDED_END -->
+
 ---
 
-# Welcome to Yggdrassl
-
-Some intro text here.
-
-## Recently Added
-<ul>
-  {% assign recent_pages = site.docs | sort: "date" | reverse %}
-  {% for page in recent_pages limit:5 %}
-    <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a> — {{ page.date | date: "%b %-d, %Y" }}</li>
-  {% endfor %}
-</ul>
+> Tip: Use the search bar (top right) to instantly find any page.
