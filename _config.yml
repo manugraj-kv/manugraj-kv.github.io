@@ -1,68 +1,74 @@
-# =========================================================
-# Site Settings
-# =========================================================
+# Site settings
 title: Yggdrassl
-description: "Our tree of knowledge"
-url: "https://manugraj-kv.github.io" # Replace with your GitHub Pages URL
-baseurl: ""                        # Leave blank unless hosting in subpath
+description: "Internal Documentation"
+baseurl: "" # For GitHub Pages user/organization site keep empty, for project site use /repo-name
+url: "https://manugraj-kv.github.io/" # Change to your site URL
 
-# =========================================================
 # Theme
-# =========================================================
 remote_theme: just-the-docs/just-the-docs
 
-# =========================================================
-# Build Settings
-# =========================================================
-markdown: kramdown
-highlighter: rouge
+# Color scheme
+color_scheme: dark
 
-# Enable search
-search_enabled: true
-search:
-  heading_level: 2
-  previews: 3
-  preview_words_before: 5
-  preview_words_after: 10
-  tokenizer_separator: /[\s/]+/
-
-# =========================================================
-# Collections
-# =========================================================
+# Navigation
+# Using collections so that sidebar shows folders
 collections:
   docs:
     output: true
     permalink: /:collection/:path/
+    sort_by: nav_order
 
-# =========================================================
-# Defaults
-# =========================================================
+just_the_docs:
+  collections:
+    docs:
+      name: Documentation
+      nav_exclude: false
+      search_exclude: false
+
+# Default settings for all docs
 defaults:
-  # Home page
   - scope:
       path: ""
-      type: pages
-    values:
-      layout: default
-      nav_order: 1
-
-  # All documents in _docs collection
-  - scope:
-      path: "_docs"
       type: docs
     values:
       layout: default
+      nav_order: 100
+      search: true
       has_children: false
-      nav_order: 10
-      # Optional: set a default date so "recent docs" works even if not set
-      date: "2025-01-01"
 
-# =========================================================
-# Navigation Links (top right corner)
-# =========================================================
-aux_links:
-  "View on GitHub":
-    - "//github.com/manugraj-kv/manugraj-kv.github.io"
-aux_links_new_tab: true
+# Search
+search_enabled: true
+search_tokenizer_separator: /[\s/]+/
 
-color_scheme: dark   # Uncomment for dark mode by default
+# Footer
+footer_content: ""  # Removes default Just the Docs footer text
+last_edit_timestamp: true
+last_edit_time_format: "%b %e, %Y"
+
+# Markdown processing
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-last-modified-at
+
+# Feed settings
+feed:
+  collections:
+    docs:
+      path: feed.xml
