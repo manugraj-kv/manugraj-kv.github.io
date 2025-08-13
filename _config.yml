@@ -1,3 +1,35 @@
-theme: jekyll-theme-minimal
-title: Test Github Pages
-description: Document store
+# _config.yml
+title: Yggdrassl
+description: "The document repository"
+baseurl: "" # leave blank unless deploying under a subpath
+url: "https://manugraj-kv.github.io" # replace with your URL
+
+# Theme
+remote_theme: just-the-docs/just-the-docs
+
+# Search settings (Lunr.js built-in)
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+
+# Navigation settings
+aux_links:
+  "GitHub Repo":
+    - "//github.com/manugraj/manugraj-kv.github.io"
+aux_links_new_tab: true
+
+# Sidebar navigation
+nav_order: 1
+# Optional: If you want to use collections for doc sections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+    nav_exclude: false
+
+# Color scheme (light/dark toggle requires manual CSS tweak)
+color_scheme: light
