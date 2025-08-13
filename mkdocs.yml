@@ -1,36 +1,40 @@
-site_name: Your Docs
+site_name: Your Documentation
 site_url: https://<your-user>.github.io/<your-repo>/
 repo_url: https://github.com/<your-user>/<your-repo>
+repo_name: <your-user>/<your-repo>
+
 theme:
   name: material
   features:
-    - navigation.instant        # snappy page transitions
-    - navigation.tracking       # updates URL on headings
-    - navigation.indexes        # folder index pages
-    - navigation.top
-    - content.code.copy
+    - navigation.instant            # faster page transitions
+    - navigation.tracking           # highlight section in sidebar
+    - navigation.sections           # nested sections in sidebar
+    - navigation.top                # back-to-top button
+    - toc.integrate                 # right-side TOC integrates when space allows
     - search.suggest
     - search.highlight
-    - search.share
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+
 plugins:
-  - search:                     # Lunr fallback if Pagefind is disabled
-      lang: en
-  - awesome-pages               # build nav from folders
-  - minify:
-      minify_html: true
-  - pagefind:                   # primary search index
-      indexing_dir: site        # where mkdocs builds
-      output_path: site/pagefind
-extra:
-  generator: false              # removes generator footer/meta
+  - search                          # full-text search (Lunr)
+  - awesome-pages                   # auto nav from folder structure
+  - gen-files:
+      scripts:
+        - scripts/gen_auto_indexes.py  # ensure each folder has an index.md
+
 markdown_extensions:
+  - admonition
+  - tables
   - toc:
       permalink: true
-  - admonition
   - attr_list
+  - def_list
   - footnotes
   - md_in_html
-  - pymdownx.highlight
-  - pymdownx.superfences
-nav:                            # optional; omit to let awesome-pages fully drive nav
-  - Home: index.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/<your-user>
+nav: []    # intentionally empty; awesome-pages builds it from docs/ tree

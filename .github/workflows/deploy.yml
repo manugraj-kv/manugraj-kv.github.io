@@ -1,4 +1,4 @@
-name: Build & Deploy Docs
+name: Build & Deploy MkDocs
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -16,48 +16,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Update recently added section
-        run: |
-            echo "Updating recently added list in docs/index.md"
-            RECENT=$(git log --pretty=format:"* [%s](%h)" --name-only --diff-filter=A --since='30 days ago' \
-              | grep '\.md$' \
-              | sort -u \
-              | sed 's#^docs/##' \
-              | sed 's#\(.*\)#* [\1](\1)#' \
-              | head -n 10)
-  
-            # Fallback if no new files
-            if [ -z "$RECENT" ]; then
-              RECENT="* _No new files in the last 30 days_"
-            fi
-  
-            # Replace between markers in docs/index.md
-            awk -v r="$RECENT" '
-              BEGIN { start=0 }
-              /<!-- RECENTLY_ADDED_START -->/ { print; print r; start=1; next }
-              /<!-- RECENTLY_ADDED_END -->/ { start=0 }
-              !start { print }
-            ' docs/index.md > docs/index.md.tmp
-  
-            mv docs/index.md.tmp docs/index.md
-
-      - name: Build site (MkDocs + Pagefind)
+      - name: Build site
         run: mkdocs build --strict
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
-          force_orphan: true
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
