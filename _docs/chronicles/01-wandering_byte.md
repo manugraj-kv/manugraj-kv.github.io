@@ -1,6 +1,6 @@
 ---
 title: Introduction to The Chronicles of the Wandering Byte
-parent: Section Name   # optional
+parent: Chronicles   # optional
 nav_order: 1
 has_children: false
 date: "2025-08-13"
