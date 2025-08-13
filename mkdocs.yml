@@ -1,27 +1,25 @@
-site_name: Your Documentation
-site_url: https://<your-user>.github.io/<your-repo>/
-repo_url: https://github.com/<your-user>/<your-repo>
-repo_name: <your-user>/<your-repo>
+site_name: Wandering Docs
+site_url: https://<your-username>.github.io/<your-repo>/
+repo_url: https://github.com/<your-username>/<your-repo>
+repo_name: <your-username>/<your-repo>
 
 theme:
   name: material
   features:
-    - navigation.instant            # faster page transitions
-    - navigation.tracking           # highlight section in sidebar
-    - navigation.sections           # nested sections in sidebar
-    - navigation.top                # back-to-top button
-    - toc.integrate                 # right-side TOC integrates when space allows
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
     - search.suggest
     - search.highlight
-  logo: assets/logo.svg
-  favicon: assets/favicon.png
 
 plugins:
-  - search                          # full-text search (Lunr)
-  - awesome-pages                   # auto nav from folder structure
+  - search
+  - awesome-pages
   - gen-files:
       scripts:
-        - scripts/gen_auto_indexes.py  # ensure each folder has an index.md
+        - scripts/gen_auto_indexes.py
 
 markdown_extensions:
   - admonition
@@ -36,5 +34,6 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/<your-user>
-nav: []    # intentionally empty; awesome-pages builds it from docs/ tree
+      link: https://github.com/<your-username>
+
+nav: []  # Let awesome-pages build from the docs/ folder
