@@ -13,6 +13,8 @@ theme:
     - toc.integrate
     - search.suggest
     - search.highlight
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
 
 plugins:
   - search
