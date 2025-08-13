@@ -3,7 +3,7 @@ title: Introduction to The Chronicles of the Wandering Byte
 parent: Section Name   # optional
 nav_order: 1
 has_children: false
-date: 2025-08-13
+date: "2025-08-13"
 ---
 
 # The Chronicles of the Wandering Byte
