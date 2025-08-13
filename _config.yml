@@ -1,13 +1,23 @@
-# _config.yml
+# =========================================================
+# Site Settings
+# =========================================================
 title: Yggdrassl
-description: "The document repository"
-baseurl: "" # leave blank unless deploying under a subpath
-url: "https://manugraj-kv.github.io" # replace with your URL
+description: "Our tree of knowledge"
+url: "https://manugraj-kv.github.io" # Replace with your GitHub Pages URL
+baseurl: ""                        # Leave blank unless hosting in subpath
 
+# =========================================================
 # Theme
+# =========================================================
 remote_theme: just-the-docs/just-the-docs
 
-# Search settings (Lunr.js built-in)
+# =========================================================
+# Build Settings
+# =========================================================
+markdown: kramdown
+highlighter: rouge
+
+# Enable search
 search_enabled: true
 search:
   heading_level: 2
@@ -16,20 +26,43 @@ search:
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
 
-# Navigation settings
-aux_links:
-  "GitHub Repo":
-    - "//github.com/manugraj/manugraj-kv.github.io"
-aux_links_new_tab: true
-
-# Sidebar navigation
-nav_order: 1
-# Optional: If you want to use collections for doc sections
+# =========================================================
+# Collections
+# =========================================================
 collections:
   docs:
     output: true
     permalink: /:collection/:path/
-    nav_exclude: false
 
-# Color scheme (light/dark toggle requires manual CSS tweak)
-color_scheme: light
+# =========================================================
+# Defaults
+# =========================================================
+defaults:
+  # Home page
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+      nav_order: 1
+
+  # All documents in _docs collection
+  - scope:
+      path: "_docs"
+      type: docs
+    values:
+      layout: default
+      has_children: false
+      nav_order: 10
+      # Optional: set a default date so "recent docs" works even if not set
+      date: 2025-01-01
+
+# =========================================================
+# Navigation Links (top right corner)
+# =========================================================
+aux_links:
+  "View on GitHub":
+    - "//github.com/manugraj-kv/manugraj-kv.github.io"
+aux_links_new_tab: true
+
+color_scheme: dark   # Uncomment for dark mode by default
