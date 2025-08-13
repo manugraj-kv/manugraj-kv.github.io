@@ -5,16 +5,7 @@ repo_name: <your-username>/<your-repo>
 
 theme:
   name: dracula
-  features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.sections
-    - navigation.top
-    - toc.integrate
-    - search.suggest
-    - search.highlight
-  logo: assets/logo.svg
-  favicon: assets/favicon.png
+  favicon: assets/favicon.ico  # Optional
 
 plugins:
   - search
